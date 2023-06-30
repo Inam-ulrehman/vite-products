@@ -1,20 +1,32 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { customFetch } from '../../lib/axios/customFetch'
+import { toast } from 'react-toastify'
 
 const initialState = {
   name: '',
-  lastName: '',
-  email: '',
+  description: '',
+  price: '',
+  purchasePrice: '',
+  quantity: '',
+  category: '',
+  storagePoint: '',
   isLoading: false,
 }
-export const productsThunk = createAsyncThunk(
-  'products/productsThunk',
-  async (_, thunkAPI) => {
-    try {
-      const response = await customFetch('')
+// =================== 1  Add Product===================
+export const addProductThunk = createAsyncThunk(
+  'products/addProductThunk',
+  async (state, thunkAPI) => {
+    const { values, clearForm } = state
 
+    try {
+      const response = await customFetch.post('/products', values)
+      clearForm()
+      toast.success('Product added successfully')
+      console.log(response)
       return response.data
     } catch (error) {
+      console.log(error)
+      toast.error(error?.response?.data?.message || 'Something went wrong')
       return thunkAPI.rejectWithValue(error.response.data)
     }
   }
@@ -41,19 +53,14 @@ const productsSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(productsThunk.pending, (state, { payload }) => {
-        console.log('promise pending')
-        console.log(payload)
+      // =================== 1  Add Product===================
+      .addCase(addProductThunk.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(productsThunk.fulfilled, (state, { payload }) => {
-        console.log('promise fulfilled')
-        console.log(payload)
+      .addCase(addProductThunk.fulfilled, (state) => {
         state.isLoading = false
       })
-      .addCase(productsThunk.rejected, (state, { payload }) => {
-        console.log('promise rejected')
-        console.log(payload)
+      .addCase(addProductThunk.rejected, (state) => {
         state.isLoading = false
       })
   },
