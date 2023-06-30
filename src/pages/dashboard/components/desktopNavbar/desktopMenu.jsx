@@ -5,6 +5,7 @@ import {
   SettingOutlined,
   UserOutlined,
   LogoutOutlined,
+  ShoppingCartOutlined,
 } from '@ant-design/icons'
 import { Button, Menu } from 'antd'
 import Cookies from 'js-cookie'
@@ -16,6 +17,24 @@ const items = [
     label: <Link to='/dashboard'>Dashboard</Link>,
     key: 'dashboard',
     icon: <DashboardOutlined />,
+  },
+  {
+    label: 'Products',
+    key: 'Products',
+    // create antd icon component for product
+
+    icon: <ShoppingCartOutlined />,
+    children: [
+      {
+        label: <Link to='/dashboard/products'>All Products</Link>,
+        key: 'products:all-products',
+      },
+      {
+        label: <Link to='/dashboard/products/add'>New Product</Link>,
+        key: 'products:add-product',
+      },
+    ],
+    // disabled: true,
   },
   {
     label: 'Settings',

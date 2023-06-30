@@ -19,6 +19,8 @@ import ContactSubmissions from './pages/dashboard/admin/contact/page'
 import ContactDetails from './pages/dashboard/settings/contact-details/page'
 import ChangePassword from './pages/dashboard/settings/change-password/page'
 import AdminSingleUser from './pages/dashboard/admin/users/singleUser/page'
+import AllProducts from './pages/dashboard/products/all-products/page'
+import AddProduct from './pages/dashboard/products/add-product/page'
 
 // ==================>>>>>> Routes Config
 
@@ -44,6 +46,7 @@ const RoutesConfig = () => {
             }
           >
             <Route index element={<Dashboard />} />
+            {/* ===========>>> settings<<<============= */}
             <Route path='/dashboard/settings/profile' element={<Profile />} />
             <Route
               path='/dashboard/settings/contact-details'
@@ -53,6 +56,15 @@ const RoutesConfig = () => {
               path='/dashboard/settings/change-password'
               element={<ChangePassword />}
             />
+            {/* ===========>>> settings<<<============= */}
+            {/* ===========>>> products<<============== */}
+            <Route path='/dashboard/products' element={<AllProducts />} />
+            <Route path='/dashboard/products/add' element={<AddProduct />} />
+            <Route
+              path='/dashboard/products/edit/:id'
+              element={<AddProduct />}
+            />
+            {/* ===========>>> products<<============== */}
 
             {/* ================>>>>> Protected Admin Dashboard Start  */}
             <Route
