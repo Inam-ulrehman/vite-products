@@ -33,6 +33,10 @@ const items = [
         label: <Link to='/dashboard/products/add'>New Product</Link>,
         key: 'products:add-product',
       },
+      {
+        label: <Link to='/dashboard/products/sold'>Sold Products</Link>,
+        key: 'products:add-product',
+      },
     ],
     // disabled: true,
   },

@@ -22,6 +22,7 @@ import AdminSingleUser from './pages/dashboard/admin/users/singleUser/page'
 import AllProducts from './pages/dashboard/products/all-products/page'
 import AddProduct from './pages/dashboard/products/add-product/page'
 import EditProduct from './pages/dashboard/products/edit-product/page'
+import SoldProducts from './pages/dashboard/products/sold-product/page'
 
 // ==================>>>>>> Routes Config
 
@@ -65,6 +66,7 @@ const RoutesConfig = () => {
               path='/dashboard/products/edit/:id'
               element={<EditProduct />}
             />
+            <Route path='/dashboard/products/sold' element={<SoldProducts />} />
             {/* ===========>>> products<<============== */}
 
             {/* ================>>>>> Protected Admin Dashboard Start  */}
