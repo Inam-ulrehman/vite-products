@@ -11,7 +11,7 @@ const DataIndex = () => {
   return (
     <Wrapper>
       <Button size='large' icon={<UserOutlined />}>
-        Total Products:
+        Total:
         <span className='span'>{totalData}</span>
       </Button>
 
@@ -21,7 +21,7 @@ const DataIndex = () => {
 
       {search && (
         <Button size='large' icon={<FileSearchOutlined />}>
-          Search Results: <span className='span'>{totalSearchCount}</span>
+          Search : <span className='span'>{totalSearchCount}</span>
         </Button>
       )}
     </Wrapper>
