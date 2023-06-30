@@ -9,12 +9,14 @@ import {
 import { styled } from 'styled-components'
 import { Button, Form, Input } from 'antd'
 import ApiLoading from '../../../../components/singleComponent/apiLoading'
+import SoldComponent from './soldComponent'
 
 const EditProduct = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const {
     isLoading,
+    isUpdating,
     _id,
     createdAt,
     name,
@@ -25,6 +27,7 @@ const EditProduct = () => {
     category,
     storagePoint,
     isAvailable,
+    revalidate,
   } = useSelector((state) => state.editProduct) // <== Here
 
   const onFinish = async (values) => {}
@@ -40,7 +43,7 @@ const EditProduct = () => {
 
   useEffect(() => {
     dispatch(singleProductThunk(id)) // <== Here
-  }, [id])
+  }, [id, revalidate])
   if (isLoading) return <ApiLoading />
   return (
     <Wrapper>
@@ -211,22 +214,13 @@ const EditProduct = () => {
               type='primary'
               htmlType='submit'
               size='large'
-              loading={isLoading}
+              loading={isUpdating}
             >
               Update
             </Button>
           </Form.Item>
           <Form.Item>
-            <Button
-              onClick={() => console.log('sold')}
-              className='update'
-              type='primary'
-              htmlType='submit'
-              size='large'
-              loading={isLoading}
-            >
-              Sold
-            </Button>
+            <SoldComponent />
           </Form.Item>
         </div>
       </Form>

@@ -9,11 +9,16 @@ const initialState = {
   name: '',
   description: '',
   price: '',
+  soldPrice: '',
+  soldQuantity: 1,
   purchasePrice: '',
   quantity: '',
   category: '',
   storagePoint: '',
   isLoading: false,
+  isUpdating: false,
+  isUpdatingQuantity: false,
+  revalidate: false,
 }
 // =================== 1  Single Product ===================
 export const singleProductThunk = createAsyncThunk(
@@ -43,8 +48,38 @@ export const editProductThunk = createAsyncThunk(
       return response.data
     } catch (error) {
       toast.error(error?.response?.data?.message || 'Something went wrong')
+
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
+// ===================   edit Product and create Order ===================
+export const editProductAddOrderThunk = createAsyncThunk(
+  'products/editProductAddOrderThunk',
+
+  async (value, thunkAPI) => {
+    const { closeModal } = value
+    const state = thunkAPI.getState().editProduct
+    const price = state.soldPrice
+    const quantity = state.soldQuantity
+    const productId = state._id
+    const { purchasePrice } = state
+    try {
+      const response = await customFetch.post(`/orders`, {
+        price,
+        quantity,
+        productId,
+        purchasePrice,
+      })
+
+      toast.success(response.data.message)
+      console.log(response)
+      closeModal()
+      return response.data
+    } catch (error) {
       console.log(error)
       toast.error(error?.response?.data?.message || 'Something went wrong')
+
       return thunkAPI.rejectWithValue(error.response.data)
     }
   }
@@ -77,6 +112,7 @@ const productsSlice = createSlice({
       })
       .addCase(singleProductThunk.fulfilled, (state, { payload }) => {
         addObjectInState(payload.result, state)
+        state.soldPrice = payload.result.price
 
         state.isLoading = false
       })
@@ -85,15 +121,27 @@ const productsSlice = createSlice({
       })
       // =================== 2  edit Product===================
       .addCase(editProductThunk.pending, (state) => {
-        state.isLoading = true
+        state.isUpdating = true
       })
       .addCase(editProductThunk.fulfilled, (state, { payload }) => {
         addObjectInState(payload.result, state)
 
-        state.isLoading = false
+        state.isUpdating = false
       })
       .addCase(editProductThunk.rejected, (state) => {
-        state.isLoading = false
+        state.isUpdating = false
+      })
+      // =================== 2  edit Product add order ===================
+      .addCase(editProductAddOrderThunk.pending, (state) => {
+        state.isUpdatingQuantity = true
+      })
+      .addCase(editProductAddOrderThunk.fulfilled, (state) => {
+        state.revalidate = !state.revalidate
+
+        state.isUpdatingQuantity = false
+      })
+      .addCase(editProductAddOrderThunk.rejected, (state) => {
+        state.isUpdatingQuantity = false
       })
   },
 })
