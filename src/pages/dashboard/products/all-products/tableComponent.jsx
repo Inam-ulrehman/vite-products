@@ -9,7 +9,7 @@ const columns = [
     dataIndex: 'name', // Array of field names
     key: 'name',
     ellipsis: true,
-    width: 130,
+    width: 110,
     render: (_, record) => (
       <Link to={`/dashboard/products/edit/${record._id}`}>{record.name}</Link>
     ),
@@ -19,7 +19,7 @@ const columns = [
     dataIndex: 'storagePoint',
     key: 'storagePoint',
     ellipsis: true,
-    width: 130,
+    width: 120,
     render: (storagePoint) => {
       return (
         <Tooltip title={storagePoint}>
