@@ -3,12 +3,14 @@ import sampleSlice from './features/samples/sampleSlice'
 import userSlice from './features/users/userSlice'
 import adminUserSlice from './features/users/adminUserSlice'
 import Cookies from 'js-cookie'
+import addProductSlice from './features/products/addProductSlice'
 
 const role = Cookies.get('role')
 
 const reducers = {
   sample: sampleSlice,
   user: userSlice,
+  addProduct: addProductSlice,
 }
 
 if (role === 'admin') {
