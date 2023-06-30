@@ -35,7 +35,7 @@ const items = [
       },
       {
         label: <Link to='/dashboard/products/sold'>Sold Products</Link>,
-        key: 'products:add-product',
+        key: 'products:sold-product',
       },
     ],
     // disabled: true,

@@ -22,10 +22,28 @@ export const singleProductThunk = createAsyncThunk(
     try {
       const response = await customFetch(`/products/${id}`)
 
-      toast.success('Product added successfully')
-
       return response.data
     } catch (error) {
+      toast.error(error?.response?.data?.message || 'Something went wrong')
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  }
+)
+// =================== 2  edit Product ===================
+export const editProductThunk = createAsyncThunk(
+  'products/editProductThunk',
+
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState().editProduct
+    const { _id } = state
+    try {
+      const response = await customFetch.put(`/products/${_id}`, state)
+
+      toast.success(response.data.message)
+      return response.data
+    } catch (error) {
+      toast.error(error?.response?.data?.message || 'Something went wrong')
+      console.log(error)
       toast.error(error?.response?.data?.message || 'Something went wrong')
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -63,6 +81,18 @@ const productsSlice = createSlice({
         state.isLoading = false
       })
       .addCase(singleProductThunk.rejected, (state) => {
+        state.isLoading = false
+      })
+      // =================== 2  edit Product===================
+      .addCase(editProductThunk.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(editProductThunk.fulfilled, (state, { payload }) => {
+        addObjectInState(payload.result, state)
+
+        state.isLoading = false
+      })
+      .addCase(editProductThunk.rejected, (state) => {
         state.isLoading = false
       })
   },
