@@ -61,7 +61,6 @@ const productsSlice = createSlice({
         state.isLoading = true
       })
       .addCase(allProductsThunk.fulfilled, (state, { payload }) => {
-        console.log(payload)
         state.userList = payload.result
         state.countOnPage = payload.countOnPage
         state.totalCount = payload.totalCount
