@@ -33,7 +33,7 @@ const columns = [
     dataIndex: 'quantity', // Array of field names
     key: 'quantity',
     ellipsis: true,
-    width: 60,
+    width: 70,
     render: (_, record) => (
       // show backgroun color based on quantity
       <span
@@ -59,7 +59,7 @@ const columns = [
     key: 'age',
     dataIndex: 'createdAt',
     align: 'center',
-    width: 90,
+    width: 100,
     render: (createdAt) => {
       const currentDate = new Date()
       const createdDate = new Date(createdAt)
