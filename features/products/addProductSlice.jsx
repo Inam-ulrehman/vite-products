@@ -22,10 +22,9 @@ export const addProductThunk = createAsyncThunk(
       const response = await customFetch.post('/products', values)
       clearForm()
       toast.success('Product added successfully')
-      console.log(response)
+
       return response.data
     } catch (error) {
-      console.log(error)
       toast.error(error?.response?.data?.message || 'Something went wrong')
       return thunkAPI.rejectWithValue(error.response.data)
     }

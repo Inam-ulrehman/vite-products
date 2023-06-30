@@ -21,6 +21,7 @@ import ChangePassword from './pages/dashboard/settings/change-password/page'
 import AdminSingleUser from './pages/dashboard/admin/users/singleUser/page'
 import AllProducts from './pages/dashboard/products/all-products/page'
 import AddProduct from './pages/dashboard/products/add-product/page'
+import EditProduct from './pages/dashboard/products/edit-product/page'
 
 // ==================>>>>>> Routes Config
 
@@ -62,7 +63,7 @@ const RoutesConfig = () => {
             <Route path='/dashboard/products/add' element={<AddProduct />} />
             <Route
               path='/dashboard/products/edit/:id'
-              element={<AddProduct />}
+              element={<EditProduct />}
             />
             {/* ===========>>> products<<============== */}
 
