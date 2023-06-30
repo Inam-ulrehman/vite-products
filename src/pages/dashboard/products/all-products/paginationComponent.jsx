@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getStateValues } from '../../../../../features/products/productsSlice'
 
 const PaginationComponent = () => {
-  const { page, totalSearchCount } = useSelector((state) => state.products)
+  const { page, totalSearchCount, limit } = useSelector(
+    (state) => state.products
+  )
   const dispatch = useDispatch()
   const onShowSizeChange = (current, pageSize) => {
     dispatch(getStateValues({ name: 'limit', value: pageSize }))
@@ -23,6 +25,7 @@ const PaginationComponent = () => {
         onChange={onChange}
         current={page}
         total={totalSearchCount}
+        pageSize={limit}
       />
     </div>
   )

@@ -6,7 +6,7 @@ const initialState = {
   userList: [],
   search: '',
   page: 1,
-  limit: 10,
+  limit: 20,
   countOnPage: 0,
   totalData: 0,
   totalSearchCount: 0,
