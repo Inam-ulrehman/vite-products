@@ -1,0 +1,91 @@
+:root {
+  /* colors */
+
+  --primary: #00b4d8;
+  --secondary: #023e8a;
+  --success: #17c964;
+  --warning: #f5a524;
+  --error: #f31260;
+  --facebook: var(--blue-8);
+  --linkedin: var(--blue-7);
+  --twitter: var(--blue-5);
+  --instagram: var(--yellow-5);
+  /* colors */
+  --primary-1: #caf0f8;
+  --primary-2: #ade8f4;
+  --primary-3: #90e0ef;
+  --primary-4: #48cae4;
+  --primary-5: #00b4d8;
+  --primary-6: #0096c7;
+  --primary-7: #0077b6;
+  --primary-8: #023e8a;
+  --primary-9: #03045e;
+
+  /* grey */
+
+  --gray-1: #ffffff;
+  --gray-2: #fafafa;
+  --gray-3: #f5f5f5;
+  --gray-4: #f0f0f0;
+  --gray-5: #d9d9d9;
+  --gray-6: #bfbfbf;
+  --gray-7: #8c8c8c;
+  --gray-8: #595959;
+  --gray-9: #434343;
+  --gray-10: #262626;
+  --gray-11: #1f1f1f;
+  --gray-12: #141414;
+  --gray-13: #000000;
+
+  /* rest of the colors */
+  --black: #222;
+  --white: #fff;
+
+  /* fonts  */
+
+  --extra-small-text: 0.7em;
+  --small-text: 0.875rem;
+  --medium-text: 1rem;
+  --large-text: 1.5rem;
+  --extra-large-text: 2rem;
+  /* rest of the vars */
+  --backgroundColor: var(--grey-05);
+  --textColor: var(--grey-9);
+  --letterSpacing: 1px;
+  --max-width: 1120px;
+  --fixed-width: 600px;
+  /* radius */
+  --radius: 0.25rem;
+  --radius-1: 0.5rem;
+  --radius-2: 0.75rem;
+  /* transition*/
+  --transition: 0.3s ease-in-out all;
+  --transition-1: 0.5s ease-in-out all;
+  --transition-2: 0.7s ease-in-out all;
+  /* box shadow*/
+  --shadow-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-4: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-5: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-6: 0 30px 35px -10px rgb(0 0 0 / 0.1),
+    0 12px 12px -8px rgb(0 0 0 / 0.1);
+  --shadow-7: 0 40px 45px -15px rgb(0 0 0 / 0.1),
+    0 16px 14px -10px rgb(0 0 0 / 0.1);
+  --shadow-8: 0 50px 55px -20px rgb(0 0 0 / 0.1),
+    0 18px 16px -12px rgb(0 0 0 / 0.1);
+  --shadow-9: 0 60px 65px -25px rgb(0 0 0 / 0.1),
+    0 20px 18px -14px rgb(0 0 0 / 0.1);
+  --shadow-10: 0 70px 75px -30px rgb(0 0 0 / 0.1),
+    0 22px 20px -16px rgb(0 0 0 / 0.1);
+}
+
+:root[class='dark'] {
+  --backgroundColor: var(--gray-12);
+  --textColor: white;
+}
+body {
+  background: var(--backgroundColor);
+  color: var(--textColor);
+}
