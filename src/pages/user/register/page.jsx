@@ -30,6 +30,7 @@ const Register = () => {
       // redirect to home page
       window.location.href = '/dashboard'
     } catch (error) {
+      console.log(error)
       setState({ ...state, isLoading: false })
       notification.error({
         message: error?.response?.data?.message || 'Something went wrong!',
