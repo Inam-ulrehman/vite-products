@@ -19,7 +19,7 @@ const Register = () => {
   const onFinish = async (values) => {
     try {
       setState({ ...state, isLoading: true })
-      const response = await customFetch.post('users', values)
+      const response = await customFetch.post('users/register', values)
       setState({ ...state, isLoading: false })
       message.success('Registration Successful!')
       const { firstName, role, token } = response.data
